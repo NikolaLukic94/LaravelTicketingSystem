@@ -1,16 +1,33 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'ticket'], function () {
+    Route::get('/index', 'TicketController@index');
+    Route::get('/show/{id}', 'TicketController@show');
+    Route::get('/edit/{id}', 'TicketController@edit');
+    Route::post('/edit/{id}', 'TicketController@updateS');
+    Route::delete('/delete/{id}', 'TicketController@destroy');
+});
+
+Route::group(['prefix' => 'ticket-category'], function () {
+    Route::get('/index', 'TicketCategoryController@index');
+    Route::get('/show/{id}', 'TicketCategoryController@show');
+    Route::get('/edit/{id}', 'TicketCategoryController@edit');
+    Route::post('/edit/{id}', 'TicketCategoryController@updateS');
+    Route::delete('/delete/{id}', 'TicketCategoryController@destroy');
+});
+
+Route::group(['prefix' => 'ticket-sub-category'], function () {
+    Route::get('/index', 'TicketSubCategoryController@index');
+    Route::get('/show/{id}', 'TicketSubCategoryController@show');
+    Route::get('/edit/{id}', 'TicketSubCategoryController@edit');
+    Route::post('/edit/{id}', 'TicketSubCategoryController@updateS');
+    Route::delete('/delete/{id}', 'TicketSubCategoryController@destroy');
 });

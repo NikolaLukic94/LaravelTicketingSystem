@@ -18,19 +18,17 @@ class CreateTicketsTable extends Migration
             $table->string('title');
             $table->string('importance');
             $table->string('description');
+            $table->string('status')->default('open');
 
             $table->timestamps();
 
-            $table->unsignedInteger('category_id');
+            $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('ticket_categories');
 
-            $table->unsignedInteger('sub_category_id');
+            $table->unsignedBigInteger('sub_category_id');
             $table->foreign('sub_category_id')->references('id')->on('ticket_sub_categories'); 
 
-            $table->unsignedInteger('ticket_image_id');
-            $table->foreign('ticket_image_id')->references('id')->on('ticket_images');
-
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');            
         });
     }

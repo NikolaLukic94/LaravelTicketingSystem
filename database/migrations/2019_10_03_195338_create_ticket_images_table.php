@@ -17,6 +17,10 @@ class CreateTicketImagesTable extends Migration
             $table->bigIncrements('id');
             $table->text('link');
             $table->timestamps();
+
+            $table->unsignedBigInteger('ticket_id')->nullable();
+            $table->foreign('ticket_id')->references('id')->on('tickets');
+
         });
     }
 

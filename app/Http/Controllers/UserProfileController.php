@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Ticket;
+use App\UserProfile;
 use Illuminate\Http\Request;
 
-class TicketController extends Controller
+class UserProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        return view('/ticket/index', [
-            'tickets' => Ticket::where('status','!=','closed')->orderBy('created_at', 'asc')->paginate(10)
-        ]);
+        //
     }
 
     /**
@@ -26,9 +24,7 @@ class TicketController extends Controller
      */
     public function create()
     {
-        return view('ticket/create',[
-            'tickets' => Ticket::where('status','!=','closed')->orderBy('created_at', 'asc')->paginate(10)
-        ]);
+        //
     }
 
     /**
@@ -39,51 +35,51 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        return view('/ticket/success');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Ticket  $ticket
+     * @param  \App\UserProfile  $userProfile
      * @return \Illuminate\Http\Response
      */
-    public function show(Ticket $ticket)
+    public function show(UserProfile $userProfile)
     {
-        return view('/ticket/show');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Ticket  $ticket
+     * @param  \App\UserProfile  $userProfile
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ticket $ticket)
+    public function edit(UserProfile $userProfile)
     {
-        return view('/ticket/edit');
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Ticket  $ticket
+     * @param  \App\UserProfile  $userProfile
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ticket $ticket)
+    public function update(Request $request, UserProfile $userProfile)
     {
-        return view('ticket/change/success');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Ticket  $ticket
+     * @param  \App\UserProfile  $userProfile
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ticket $ticket)
+    public function destroy(UserProfile $userProfile)
     {
-        return redirect('/ticket/index');
+        //
     }
 }

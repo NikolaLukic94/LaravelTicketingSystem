@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\TicketCategory;
 use Illuminate\Http\Request;
+use App\Request\StoreTicketCategory;
 
 class TicketCategoryController extends Controller
 {
@@ -14,7 +15,9 @@ class TicketCategoryController extends Controller
      */
     public function index()
     {
-        return view('/ticket_category/index');
+        return view('/ticket_category/ticket_cat',[
+            'tickets' => TicketCategory::all()
+        ]);
     }
 
     /**
@@ -24,7 +27,9 @@ class TicketCategoryController extends Controller
      */
     public function create()
     {
-        return view('ticket_category/create');
+        return view('ticket_category/ticket_cat',[
+            'tickets' => TicketCategory::all()
+        ]);
     }
 
     /**
@@ -35,7 +40,23 @@ class TicketCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        return view('/ticket_category/success');
+        $validator = Validator::make($request->input(), array(
+            'name' => 'required'
+        ));
+
+        if ($validator->fails()) {
+            return response()->json([
+                'error'    => true,
+                'messages' => $validator->errors(),
+            ], 422);
+        }
+
+        $ticket_category = TicketCategory::create([$request->name]);
+
+        return response()->json([
+            'error' => false,
+            'ticket_category'  => $ticket_category,
+        ], 200);
     }
 
     /**

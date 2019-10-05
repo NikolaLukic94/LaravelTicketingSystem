@@ -18,8 +18,18 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">Ticket</a>
+                            </li>   
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">TCat</a>
+                            </li>                                                    
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">TSubCat</a>
+                            </li>               
+                            <hr style="width: 1px; height: 15px; background: black; border: none;" />        
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
+                            </li>                         
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>

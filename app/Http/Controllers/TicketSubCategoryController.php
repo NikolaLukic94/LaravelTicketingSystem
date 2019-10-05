@@ -35,6 +35,8 @@ class TicketSubCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        TicketSubCategory::createFromRequest($request);
+        
         return view('/ticket_sub_category/success');
     }
 

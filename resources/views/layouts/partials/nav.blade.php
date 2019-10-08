@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<nav class="navbar navbar-expand-md  navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <b>TSys</b>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -16,17 +16,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Ticket</a>
-                            </li>   
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">TCat</a>
-                            </li>                                                    
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">TSubCat</a>
-                            </li>               
-                            <hr style="width: 1px; height: 15px; background: black; border: none;" />        
+                        @guest                 
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>                         
@@ -35,13 +25,39 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
-                        @else
+                        @else   
+                            <li class="nav-item">
+                                <a class="nav-link" href="/ticket/index"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                            </li>                                                                        
+                            <li class="nav-item">
+                                <a class="nav-link" href="/ticket/create"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                            </li>    
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                   <i class="far fa-cog"></i> <span class="caret"></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="ticket-category/index">
+                                        Category
+                                    </a>
+                                    <a class="dropdown-item" href="ticket-sub-category/index">
+                                        Subcategory
+                                    </a>
+                                </div>
+                            </li>  
+                            <li class="nav-item">
+                                <a class="nav-link" href="/ticket/create"><i class="fa fa-bell" aria-hidden="true"></i></a>
+                            </li>                                 
+                                                                         
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/my-profile">
+                                        Profile
+                                    </a>                                    
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

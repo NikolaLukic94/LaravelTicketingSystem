@@ -19,10 +19,10 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2>Manage <b>Tasks</b></h2>
+                        <h2>Manage <b>Ticket Categories</b></h2>
                     </div>
                     <div class="col-sm-6">
-                        <a onclick="event.preventDefault();addTicketCategoryForm();" href="#" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Task</span></a>      
+                        <a onclick="event.preventDefault();addTicketCategoryForm();" href="#" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Category</span></a>      
                         <!--  The line event.preventDefault(); prevents the normal anchor behavior which is opening a link and addTaskForm(); calls a JavaScript function that displays our form. -->                                         
                     </div>
                 </div>
@@ -30,12 +30,8 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Task</th>
+                        <th>Name</th>
                         <th>Created At</th>
-                        <th>Description</th>
-                        <th>Done</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>

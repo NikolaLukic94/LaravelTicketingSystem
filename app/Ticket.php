@@ -3,21 +3,50 @@
 namespace App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
+use App\TicketImage;
 
 class Ticket extends Model
 {
-    protected $fillable = [ 'name' ];
+    public function images() {
+
+        return $this->hasMany(TicketImage::class)->latest();
+    }
+
+    /**
+     * Get the assigne associated with the ticket.
+     */
+    public function ticketProcessor()
+    {
+        return $this->hasOne(TicketProcessor::class);
+    }
+
+    public function imageCount() {
+
+        return $this->hasMany(TicketImage::class)->count();
+    }
+
+    protected $fillable = [ 'title',
+                            'importance',
+                            'description',
+                            'category_id',
+                            'sub_category_id',
+                            'user_id' ];
 
     public static function createFromRequest($request)
-    {
-        self::create([
+    {   
+        $imageName = null;
+        $auth_id = Auth::user()->id;
+
+        $new_ticket = self::create([
             'title' =>  $request->title,
             'importance' =>  $request->importance,
             'description' => $request->description,
-            'category_id' => $request->category_id,
-            'sub_category_id' => $request->sub_category_id,
-            'ticket_image_id' => $request->ticket_image_id,
-            'user_id' => $request->Auth::user()->id     
+            'category_id' => $request->subcategory,
+            'sub_category_id' => $request->subcategory,
+            'user_id' => $auth_id    
         ]);
+
+        TicketImage::createFromRequest($new_ticket->id, $request);
+
     }
 }

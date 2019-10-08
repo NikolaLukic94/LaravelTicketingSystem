@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{asset('css/style.css')}}">
-
 </head>
 <!-- 
 <meta name="csrf-token" content="{{ csrf_token() }}"> sets the Laravel CSRF token as a header meta value. We will need this value when performing AJAX operations
@@ -21,10 +20,10 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2>Manage <b>Ticket Subcategories</b></h2>
+                        <h2>Manage <b>Tickets</b></h2>
                     </div>
                     <div class="col-sm-6">
-                        <a onclick="event.preventDefault();addTicketSubCategoryForm();" href="#" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Task</span></a>      
+                        <a onclick="event.preventDefault();addTicketForm();" href="#" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Ticket</span></a>      
                         <!--  The line event.preventDefault(); prevents the normal anchor behavior which is opening a link and addTaskForm(); calls a JavaScript function that displays our form. -->                                         
                     </div>
                 </div>
@@ -32,12 +31,8 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Task</th>
+                        <th>Name</th>
                         <th>Created At</th>
-                        <th>Description</th>
-                        <th>Done</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>

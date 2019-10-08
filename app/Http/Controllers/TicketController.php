@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Ticket;
+use App\TicketImage;
 use Illuminate\Http\Request;
+//use RealRashid\SweetAlert\Facades\Alert;
+use Alert;
+use Illuminate\Support\Facades\Storage;
 
 class TicketController extends Controller
 {
@@ -11,11 +15,13 @@ class TicketController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * this page will only be available to admin and it will contain form for creating ticket as well as the list of all tickets
      */
     public function index()
-    {
+    {  
         return view('/ticket/index', [
-            'tickets' => Ticket::where('status','!=','closed')->orderBy('created_at', 'asc')->paginate(10)
+            'tickets' => Ticket::where('status','!=','closed')->orderBy('created_at', 'asc')->paginate(10),
+            'images' => TicketImage::all()
         ]);
     }
 
@@ -23,12 +29,12 @@ class TicketController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
+     * this page will be shown to users as they do not have option to see other tickets
      */
     public function create()
     {
-        return view('ticket/create',[
-            'tickets' => Ticket::where('status','!=','closed')->orderBy('created_at', 'asc')->paginate(10)
-        ]);
+        return view('ticket/user_create');
+
     }
 
     /**
@@ -39,7 +45,9 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        return view('/ticket/success');
+        Ticket::createFromRequest($request);   
+
+        return back();
     }
 
     /**
@@ -48,9 +56,12 @@ class TicketController extends Controller
      * @param  \App\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function show(Ticket $ticket)
+    public function show($id)
     {
-        return view('/ticket/show');
+        return view('/ticket/show',[
+            'ticket' => Ticket::findOrFail($id),
+            'path' => Storage::get('images/' . TicketImage::findOrFail($id)->link)
+        ]);
     }
 
     /**

@@ -10,8 +10,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'ticket'], function () {
     Route::get('/index', 'TicketController@index');
-    Route::get('/create', 'TicketController@create');    
-    Route::post('/store', 'TicketController@store');
+    Route::get('/create', 'TicketController@create'); //will use users, admin will have ajax option   
+    Route::post('/create', 'TicketController@store');
     Route::get('/show/{id}', 'TicketController@show');
     Route::get('/edit/{id}', 'TicketController@edit');
     Route::post('/edit/{id}', 'TicketController@update');
@@ -37,3 +37,6 @@ Route::group(['prefix' => 'ticket-sub-category'], function () {
     Route::post('/edit/{id}', 'TicketSubCategoryController@updateS');
     Route::delete('/delete/{id}', 'TicketSubCategoryController@destroy');
 });
+
+
+Route::get('my-profile', 'UserProfileController@index');

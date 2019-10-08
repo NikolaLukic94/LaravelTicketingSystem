@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\UserProfile;
-use App\User;
-use App\TicketCategory;
-use App\TicketSubCategory;
-use Auth;
+use App\TicketProcessor;
 use Illuminate\Http\Request;
 
-class UserProfileController extends Controller
+class TicketProcessorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +13,18 @@ class UserProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { $u = User::where('id', Auth::id())->get(); dd($u);
-        return view('profile.view',[
-            'user' => User::where('id', Auth::id())->get(),
-            'ticket_categories' => TicketCategory::all(),
-            'ticket_subcategories' => TicketSubCategory::all()
-        ]);
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -39,10 +41,10 @@ class UserProfileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\UserProfile  $userProfile
+     * @param  \App\TicketProcessor  $ticketProcessor
      * @return \Illuminate\Http\Response
      */
-    public function show(UserProfile $userProfile)
+    public function show(TicketProcessor $ticketProcessor)
     {
         //
     }
@@ -50,10 +52,10 @@ class UserProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\UserProfile  $userProfile
+     * @param  \App\TicketProcessor  $ticketProcessor
      * @return \Illuminate\Http\Response
      */
-    public function edit(UserProfile $userProfile)
+    public function edit(TicketProcessor $ticketProcessor)
     {
         //
     }
@@ -62,10 +64,10 @@ class UserProfileController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\UserProfile  $userProfile
+     * @param  \App\TicketProcessor  $ticketProcessor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UserProfile $userProfile)
+    public function update(Request $request, TicketProcessor $ticketProcessor)
     {
         //
     }
@@ -73,10 +75,10 @@ class UserProfileController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\UserProfile  $userProfile
+     * @param  \App\TicketProcessor  $ticketProcessor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserProfile $userProfile)
+    public function destroy(TicketProcessor $ticketProcessor)
     {
         //
     }

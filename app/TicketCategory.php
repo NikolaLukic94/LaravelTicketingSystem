@@ -11,7 +11,21 @@ class TicketCategory extends Model
     public static function createFromRequest($request)
     {
         self::create([
-            'name' =>  $request->title
+            'name' =>  $request->name
         ]);
+    }
+
+    public static  function updateFromRequest($request, $id) 
+    {
+        $ticket_category = TicketCategory::findOrFail($id);
+            
+        $ticket_category->name = $request->name;  
+            
+        return $ticket_category->save();  
+    }  
+
+    public function getTicketCategory($category_name) 
+    {
+    	
     }
 }

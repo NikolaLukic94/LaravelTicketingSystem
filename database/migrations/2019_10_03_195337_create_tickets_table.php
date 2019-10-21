@@ -16,11 +16,15 @@ class CreateTicketsTable extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->string('importance');
+            $table->string('importance')->default('medium');
             $table->string('description');
-            $table->string('status')->default('open');
+            $table->string('status')->default('new');
+            $table->date('due')->nullable();
 
             $table->timestamps();
+
+            $table->unsignedBigInteger('label_id')->nullable();
+            $table->foreign('label_id')->references('id')->on('labels');
 
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('ticket_categories');

@@ -37,11 +37,14 @@
                                    <i class="far fa-cog"></i> <span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="label/index">
+                                        <i class="fa fa-tag" aria-hidden="true"></i>Label
+                                    </a>                                    
                                     <a class="dropdown-item" href="ticket-category/index">
-                                        Category
+                                        <i class="fa fa-list-alt" aria-hidden="true"></i>Category
                                     </a>
                                     <a class="dropdown-item" href="ticket-sub-category/index">
-                                        Subcategory
+                                        <i class="fas fa-list-alt"></i>Subcategory
                                     </a>
                                 </div>
                             </li>  
@@ -56,7 +59,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/my-profile">
-                                        Profile
+                                        <i class="fa fa-user" aria-hidden="true"></i>Profile
                                     </a>                                    
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

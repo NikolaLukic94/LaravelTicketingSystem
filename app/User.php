@@ -36,4 +36,39 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function numOfTicketsAssigned() 
+    {
+
+    }
+
+    public function participatingInTickets() 
+    {
+        
+    }
+
+    public function solvedTotalTickets() 
+    {
+        
+    }
+
+    public function participatingInNumOfTickets() 
+    {
+
+    }
+
+    public function countOfTicketUserIsWorkingOn() 
+    {
+
+    }
+
+    public function getTicketsICreatedNum() 
+    {
+
+    } 
+
+    public function getTicketsICreated() 
+    {
+
+    }    
 }

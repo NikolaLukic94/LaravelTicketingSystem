@@ -40,22 +40,12 @@ class TicketCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->input(), array(
-            'name' => 'required'
-        ));
-
-        if ($validator->fails()) {
-            return response()->json([
-                'error'    => true,
-                'messages' => $validator->errors(),
-            ], 422);
-        }
-
-        $ticket_category = TicketCategory::create([$request->name]);
+        $ticket_category = TicketCategory::create([
+            'name' =>  $request->name
+        ]);
 
         return response()->json([
-            'error' => false,
-            'ticket_category'  => $ticket_category,
+            'error' => false
         ], 200);
     }
 

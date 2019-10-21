@@ -35,14 +35,57 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="sweetalert2.min.js"></script>
     @include('sweetalert::alert')
-
 </head>
 <body>
     <div id="app">
         @include('layouts/partials/nav')
-
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                <h1><b>Board</b></h1>
+                <form action="/" method="post">
+                {{ csrf_field() }}
+                    <div class="input-group input-group-sm mb-3">
+                        <input type="text" name="value" class="form-control">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search by</button>
+                            <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/">Action</a>
+                            <a class="dropdown-item" href="/">Importance</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                    </div>
+                </div>                
+                <div class="input"></div>
+                @if($labels)                
+                    <div class="row">
+                        @foreach($labels as $label)
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">
+                                    {{ $label->name }}
+                                </div>
+                                <div class="card-body text-center">
+                                    @foreach($tickets as $ticket)
+                                        @if($ticket->label_id == $label->id)
+                                          <div class="card">
+                                              <a href="/ticket/show/{{$ticket->id}}">{{ $ticket->title }}</a>
+                                                <img src="">                                              
+                                          </div>
+                                        @endif
+                                    @endforeach
+                                </div>
+
+                                <div class="card-footer">
+
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                @endif    
+                </div>
+            </div>
         </main>
     </div>
 </body>

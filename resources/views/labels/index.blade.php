@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,21 +7,21 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 <!-- 
 <meta name="csrf-token" content="{{ csrf_token() }}"> sets the Laravel CSRF token as a header meta value. We will need this value when performing AJAX operations
 -->
 <body>
-    @include('layouts/partials/nav')
     <div class="container">
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h2>Manage <b>Ticket Categories</b></h2>
+                        <h2>Manage <b>Tickets</b></h2>
                     </div>
                     <div class="col-sm-6">
-                        <a onclick="event.preventDefault();addTicketCategoryForm();" href="#" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Category</span></a>      
+                        <a onclick="event.preventDefault();addLabelForm();" href="#" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Ticket</span></a>      
                         <!--  The line event.preventDefault(); prevents the normal anchor behavior which is opening a link and addTaskForm(); calls a JavaScript function that displays our form. -->                                         
                     </div>
                 </div>
@@ -36,11 +34,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($tickets as $ticket)
-                    <tr  id="list">
+                    @foreach($labels as $ticket)
+                    <tr>
                         <td>{{$ticket->name}}</td>
                         <td>
-                            <a onclick="event.preventDefault();editTicketCategoryForm({{$ticket->id}});" href="#" class="edit open-modal" data-toggle="modal" value="{{$ticket->id}}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a onclick="event.preventDefault();editTicketSubCategoryForm({{$ticket->id}});" href="#" class="edit open-modal" data-toggle="modal" value="{{$ticket->id}}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a onclick="event.preventDefault();deleteTicketCategoryForm({{$ticket->id}});" href="#" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
                     </tr>
@@ -53,10 +51,10 @@
 
         </div>
     </div>
-    @include('ticket_category.ajax_add')
-    @include('ticket_category.ajax_edit')
-    @include('ticket_category.ajax_delete')
+    @include('labels.add')
+    @include('labels.edit')
+    @include('labels.delete')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="{{asset('js/ticket_category.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/label.js')}}"></script>
 </body>

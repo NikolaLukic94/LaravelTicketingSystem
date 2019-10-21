@@ -14,9 +14,9 @@
             			<img src="https://www.truelifedenver.com/wp-content/uploads/2016/04/blank-profile-head-hi.png" height="300" width="300">
             			<hr>
             		</div>            			
-            			<p>Experience: Pro <i>33 approvals</i></p>
+            			<p>Experience:<i> {{ $user->exp }} points</i></p>
             			<p>Assignee to: <i>4 tickets</i></p>
-            			<p>Rank: Admin</p>
+            			<p>Rank: {{ $user->role }}</p>
             			<hr>
             			<h4>Summary</h4>
             			<p>Participating in <i>14 tickets</i></p>

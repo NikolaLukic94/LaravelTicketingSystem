@@ -10,4 +10,16 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function __construct()
+    {
+
+    }
+    public $importance = [
+          '1' => 'low',
+          '2' => 'medium',
+          '3' => 'high'
+        ];
+    
+
 }

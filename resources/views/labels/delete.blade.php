@@ -1,11 +1,11 @@
 <!-- Delete Task Modal Form HTML -->
-<div class="modal fade" id="deleteTicketModal">
+<div class="modal fade" id="deleteLabelModal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="frmDeleteTicket">
+            <form id="frmDeleteLabel">
                 <div class="modal-header">
                     <h4 class="modal-title" id="delete-title" name="title">
-                        Delete Ticket
+                        Delete Ticket Sub-Category
                     </h4>
                     <button aria-hidden="true" class="close" data-dismiss="modal" type="button">
                         ×

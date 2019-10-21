@@ -1,8 +1,8 @@
 <!-- Edit Modal HTML -->
-<div class="modal fade" id="editTaskModal">
+<div class="modal fade" id="editTicketModal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="frmEditTicketSubCategory">
+            <form id="frmEditTicket">
                 <div class="modal-header">
                     <h4 class="modal-title">
                         Edit Task

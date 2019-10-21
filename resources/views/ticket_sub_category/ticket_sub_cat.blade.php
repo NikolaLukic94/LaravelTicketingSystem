@@ -24,8 +24,7 @@
                         <h2>Manage <b>Ticket Subcategories</b></h2>
                     </div>
                     <div class="col-sm-6">
-                        <a onclick="event.preventDefault();addTicketSubCategoryForm();" href="#" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Task</span></a>      
-                        <!--  The line event.preventDefault(); prevents the normal anchor behavior which is opening a link and addTaskForm(); calls a JavaScript function that displays our form. -->                                         
+                        <a onclick="event.preventDefault();addTicketSubCategoryForm();" href="#" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Ticket Subcategory</span></a>                                               
                     </div>
                 </div>
             </div>
@@ -41,12 +40,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($tickets as $ticket)
+                    @foreach($ticket_sub_cat as $tsc)
                     <tr>
-                        <td>{{$ticket->name}}</td>
+                        <td>{{$tsc->name}}</td>
                         <td>
-                            <a onclick="event.preventDefault();editTicketSubCategoryForm({{$ticket->id}});" href="#" class="edit open-modal" data-toggle="modal" value="{{$ticket->id}}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a onclick="event.preventDefault();deleteTicketCategoryForm({{$ticket->id}});" href="#" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                            <a onclick="event.preventDefault();editTicketSubCategoryForm({{$tsc->id}});" href="#" class="edit open-modal" data-toggle="modal" value="{{$tsc->id}}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a onclick="event.preventDefault();deleteTicketSubCategoryForm({{$tsc->id}});" href="#" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
                     </tr>
                     @endforeach

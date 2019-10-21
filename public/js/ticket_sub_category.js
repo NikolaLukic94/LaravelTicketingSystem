@@ -77,10 +77,10 @@ $(document).ready(function() {
     });
 });
 
-function addTicketCategoryForm() {// defines the show add task modal form.
+function addTicketSubCategoryForm() {// defines the show add task modal form.
     $(document).ready(function() {
         $("#add-error-bag").hide();
-        $('#addTicketCategoryModal').modal('show');
+        $('#addTicketSubCategoryModal').modal('show');
     });
 }
 

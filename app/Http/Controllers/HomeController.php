@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Search\TicketSearch;
+use App\Label;
+use App\Ticket;
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,4 +29,20 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function home(Request $request)
+    {
+        if ($request->isMethod('post')) {
+
+            return TicketSearch::apply($request);
+
+        }   else    {
+
+            return view('welcome',[
+                'labels' => Label::all(),
+                'tickets' => Ticket::all()
+            ]);
+        }
+
+    }    
 }

@@ -1,11 +1,11 @@
 <!-- Edit Modal HTML -->
-<div class="modal fade" id="editTicketCategoryModal">
+<div class="modal fade" id="editLabelModal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="frmEditTicketCategory">
+            <form id="frmEditLabel">
                 <div class="modal-header">
                     <h4 class="modal-title">
-                        Edit Task
+                        Edit Label
                     </h4>
                     <button aria-hidden="true" class="close" data-dismiss="modal" type="button">
                         ×
@@ -13,29 +13,29 @@
                 </div>
                 <div class="modal-body">
                     <div class="alert alert-danger" id="edit-error-bag">
-                        <ul id="edit-task-errors">
+                        <ul id="edit-ticket-label-errors">
                         </ul>
                     </div>
                     <div class="form-group">
                         <label>
-                            Task
+                            Name
                         </label>
-                        <input class="form-control" id="task" name="task" required="" type="text">
+                        <input class="form-control" id="name" name="name" type="text" required>
                         </input>
                     </div>
                     <div class="form-group">
                         <label>
-                            Description
+                            Order
                         </label>
-                        <input class="form-control" id="description" name="description" required="" type="text">
+                        <input class="form-control" id="order" name="order" type="text">
                         </input>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input id="task_id" name="task_id" type="hidden" value="0">
+                    <input id="label_id" name="label_id" type="hidden" value="0">
                         <input class="btn btn-default" data-dismiss="modal" type="button" value="Cancel">
                             <button class="btn btn-info" id="btn-edit" type="button" value="add">
-                                Update Task
+                                Update Label
                             </button>
                         </input>
                     </input>

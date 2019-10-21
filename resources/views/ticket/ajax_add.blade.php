@@ -1,10 +1,10 @@
-<div class="modal fade" id="addTicketCategoryModal">
+<div class="modal fade" id="addTicketModal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form id="frmAddTicketSubCategory">
+            <form id="frmAddTicket">
                 <div class="modal-header">
                     <h4 class="modal-title">
-                        Add New Ticket Sub-Category
+                        Add New Ticket
                     </h4>
                     <button aria-hidden="true" class="close" data-dismiss="modal" type="button">
                         ×
@@ -91,7 +91,7 @@
                 <div class="modal-footer">
                     <input class="btn btn-default" data-dismiss="modal" type="button" value="Cancel">
                         <button class="btn btn-info" id="btn-add" type="button" value="add">
-                            Add New Ticket Subcategory
+                            Add New Ticket
                         </button>
                     </input>
                 </div>

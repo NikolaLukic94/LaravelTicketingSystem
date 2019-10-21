@@ -8,25 +8,20 @@ $(document).ready(function() {
         });
         $.ajax({ //performs the AJAX operation.
             type: 'POST',//type: 'POST', specifies the HTTP verb to be used.
-            url: '/ticket-category/store',//url: '/ticket-category', defines the URL that our AJAX operation should interact with.
+            url: '/ticket/store',//url: '/ticket-category', defines the URL that our AJAX operation should interact with.
             data: {//defines the values that should be submitted to the back-end server that processes the AJAX operations.
-                name: $("#frmAddTicketCategory input[name=name]").val(),// uses jQuery to get the value of the input named name in the form with the id of #frmAddTask.
+                name: $("#frmAddTicket input[name=name]").val(),// uses jQuery to get the value of the input named name in the form with the id of #frmAddTask.
             },
             dataType: 'json', // sets the data type for the operation
             success: function(data) {//defines the function that should be called if everything works ok. The function accepts a parameter data which contains the data returned from the server.
-                $('#frmAddTicketCategory').trigger("reset");
-                $("#frmAddTicketCategory .close").click();
-         //       var tr = $('<tr>');
-         //       tr.append($('<td>',{ticket_category.name})).
-         //           append($('</td>').
-         //           append($('<td>'));
-                                                                                                                                            
-         //       $('#list').apend(tr);
-                }, 
+                $('#frmAddTicket').trigger("reset");
+                $("#frmAddTicket .close").click();
+                window.location.reload();
+            },
             error: function(data) {
                 var errors = $.parseJSON(data.responseText);
 
-                $('#add-ticket-category-errors').html('');
+                $('#add-ticket-errors').html('');
                 $.each(errors.messages, function(key, value) {
                    console.log(value);
                 });
@@ -42,21 +37,21 @@ $(document).ready(function() {
         });
         $.ajax({ 
             type: 'PUT',
-            url: '/ticket-category/edit' + $("#frmEditTicketCategory input[name=ticket_category_id]").val(),
+            url: '/ticket/edit' + $("#frmEditTicket input[name=ticket_id]").val(),
             data: {
-                task: $("#frmEditTicketCategory input[name=name]").val()
+                task: $("#frmEditTicket input[name=name]").val()
             },
             dataType: 'json',
             success: function(data) {
-                $('#frmEditTicketCategory').trigger("reset");
-                $("#frmEditTicketCategory .close").click();
+                $('#frmEditTicket').trigger("reset");
+                $("#frmEditTicket .close").click();
                 window.location.reload();
             },
             error: function(data) {
                 var errors = $.parseJSON(data.responseText);
-                $('#edit-ticket-category-errors').html('');
+                $('#edit-ticket-errors').html('');
                 $.each(errors.messages, function(key, value) {
-                    $('#edit-ticket-category-errors').append('<li>' + value + '</li>');
+                    $('#edit-ticket-errors').append('<li>' + value + '</li>');
                 });
                 $("#edit-error-bag").show();
             }
@@ -70,10 +65,10 @@ $(document).ready(function() {
         });
         $.ajax({
             type: 'DELETE',
-            url: '/delete/' + $("#frmDeleteTicketCategory input[name=ticket_category_id]").val(),
+            url: '/delete/' + $("#frmDeleteTicket input[name=ticket_id]").val(),
             dataType: 'json',
             success: function(data) {
-                $("#frmDeleteTicketCategory .close").click();
+                $("#frmDeleteTicket .close").click();
                 window.location.reload();
             },
             error: function(data) {
@@ -83,22 +78,35 @@ $(document).ready(function() {
     });
 });
 
-function addTicketCategoryForm() {// defines the show add task modal form.
+function addTicketForm() {// defines the show add task modal form.
     $(document).ready(function() {
         $("#add-error-bag").hide();
-        $('#addTicketCategoryModal').modal('show');
+        $('#addTicketModal').modal('show');
+    });
+}
+function showTicketModal() {// defines the show add task modal form.
+    $(document).ready(function() {
+        $("#add-error-bag").hide();
+        $('#showTicketModal').modal('show');
     });
 }
 
-function editTicketCategoryForm(ticket_category_id) {
+function viewImage() {// defines the show add task modal form.
+    $(document).ready(function() {
+        $("#add-error-bag").hide();
+        $('#viewImageTicketModal').modal('show');
+    });
+}
+
+function editTicketCategoryForm(task_id) {
     $.ajax({
         type: 'GET',
-        url: '/ticket-category/edit/' + task_id,
+        url: '/ticket/edit/' + task_id,
         success: function(data) {
             $("#edit-error-bag").hide();
-            $("#frmEditTicketCategory input[name=name]").val(data.ticket_category.ticket_category);
-            $("#frmEditTicketCategory input[name=ticket_category_id]").val(data.ticket_category.id);
-            $('#frmEditTicketCategory').modal('show');
+            $("#frmEditTicket input[name=name]").val(data.task.task);
+            $("#frmEditTicket input[name=ticket_id]").val(data.task.id);
+            $('#frmEditTicket').modal('show');
         },
         error: function(data) {
             console.log(data);
@@ -109,11 +117,11 @@ function editTicketCategoryForm(ticket_category_id) {
 function deleteTicketCategoryForm(task_id) {
     $.ajax({
         type: 'GET',
-        url: '/tasks/' + task_id,
+        url: '/ticket/' + task_id,
         success: function(data) {
-            $("#frmDeleteTicketCategory #delete-title").html("Delete Task (" + data.task.task + ")?");
-            $("#frmDeleteicketCategory input[name=task_id]").val(data.task.id);
-            $('#deleteTaskModal').modal('show');
+            $("#frmDeleteTicket #delete-title").html("Delete Task (" + data.task.task + ")?");
+            $("#frmDeleteicket input[name=task_id]").val(data.task.id);
+            $('#deleteTicketModal').modal('show');
         },
         error: function(data) {
             console.log(data);

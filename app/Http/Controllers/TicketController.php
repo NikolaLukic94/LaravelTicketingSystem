@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Ticket;
 use App\TicketImage;
+use App\TicketCategory;
+use App\TicketSubCategory;
 use Illuminate\Http\Request;
 //use RealRashid\SweetAlert\Facades\Alert;
 use Alert;
@@ -20,21 +23,12 @@ class TicketController extends Controller
     public function index()
     {  
         return view('/ticket/index', [
-            'tickets' => Ticket::where('status','!=','closed')->orderBy('created_at', 'asc')->paginate(10),
-            'images' => TicketImage::all()
+            'users' => User::all(),
+            'tickets' => Ticket::all(),
+            //where('status','!=','closed')->orderBy('created_at', 'asc')->first(),
+            'images' => TicketImage::all(),
+            'importance' => $this->importance            
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     * this page will be shown to users as they do not have option to see other tickets
-     */
-    public function create()
-    {
-        return view('ticket/user_create');
-
     }
 
     /**

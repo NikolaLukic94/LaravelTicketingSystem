@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\UserProfile;
-use App\User;
-use App\TicketCategory;
-use App\TicketSubCategory;
-use Auth;
+use App\Label;
 use Illuminate\Http\Request;
 
-class UserProfileController extends Controller
+class LabelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +14,8 @@ class UserProfileController extends Controller
      */
     public function index()
     {
-        return view('profile.view',[
-            'user' => User::where('id', Auth::id())->first(),
-            'ticket_categories' => TicketCategory::all(),
-            'ticket_subcategories' => TicketSubCategory::all()
+        return view('labels.index',[
+            'labels' => Label::all()
         ]);
     }
 
@@ -39,10 +33,10 @@ class UserProfileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\UserProfile  $userProfile
+     * @param  \App\Label  $label
      * @return \Illuminate\Http\Response
      */
-    public function show(UserProfile $userProfile)
+    public function show(Label $label)
     {
         //
     }
@@ -50,10 +44,10 @@ class UserProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\UserProfile  $userProfile
+     * @param  \App\Label  $label
      * @return \Illuminate\Http\Response
      */
-    public function edit(UserProfile $userProfile)
+    public function edit(Label $label)
     {
         //
     }
@@ -62,10 +56,10 @@ class UserProfileController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\UserProfile  $userProfile
+     * @param  \App\Label  $label
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UserProfile $userProfile)
+    public function update(Request $request, Label $label)
     {
         //
     }
@@ -73,10 +67,10 @@ class UserProfileController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\UserProfile  $userProfile
+     * @param  \App\Label  $label
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserProfile $userProfile)
+    public function destroy(Label $label)
     {
         //
     }

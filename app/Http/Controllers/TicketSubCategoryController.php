@@ -14,7 +14,9 @@ class TicketSubCategoryController extends Controller
      */
     public function index()
     {
-        return view('/ticket_sub_category/index');
+        return view('/ticket_sub_category/ticket_sub_cat',[
+            'ticket_sub_cat' => TicketSubCategory::all()
+        ]);
     }
 
     /**

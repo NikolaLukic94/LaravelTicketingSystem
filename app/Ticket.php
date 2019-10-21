@@ -30,7 +30,8 @@ class Ticket extends Model
                             'description',
                             'category_id',
                             'sub_category_id',
-                            'user_id' ];
+                            'user_id',
+                            'due' ];
 
     public static function createFromRequest($request)
     {   
@@ -49,4 +50,25 @@ class Ticket extends Model
         TicketImage::createFromRequest($new_ticket->id, $request);
 
     }
+
+    public function getDueTodayTickets($today) {
+        return $tickets = Ticket::where('due', $today)->get();
+    }    
+
+    public function solve($ticket_id) {
+    //    return Ticket::findOrFail()
+    }  
+
+    public function getTicketsWithSameStatus($status) {
+        return $tickets = Ticket::where('status',$status)->get();
+    }   
+
+    public function countTicketsWithSameStatus($status) {
+        return $ticket_count = Ticket::where('status', $status)->count();
+    }     
+
+    public function getLatestTicket($field_for_sorting) {
+        return DB::table('tickets')->latest($field_for_sorting)->first();
+    }     
+
 }

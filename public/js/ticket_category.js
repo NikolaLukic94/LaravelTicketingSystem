@@ -16,12 +16,11 @@ $(document).ready(function() {
             success: function(data) {//defines the function that should be called if everything works ok. The function accepts a parameter data which contains the data returned from the server.
                 $('#frmAddTicketCategory').trigger("reset");
                 $("#frmAddTicketCategory .close").click();
-         //       var tr = $('<tr>');
-         //       tr.append($('<td>',{ticket_category.name})).
-         //           append($('</td>').
-         //           append($('<td>'));
-                                                                                                                                            
-         //       $('#list').apend(tr);
+                var tr = $('<tr>');
+                tr.append($('<td>',{ticket_category.name})).
+                    append($('</td>').
+                    append($('<td>'));                                                                                                                            
+                $('#list').apend(tr);
                 }, 
             error: function(data) {
                 var errors = $.parseJSON(data.responseText);

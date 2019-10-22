@@ -1,11 +1,9 @@
 @extends('layouts.app')
-
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
-
 @section('content')
 <!-- 
 <meta name="csrf-token" content="{{ csrf_token() }}"> sets the Laravel CSRF token as a header meta value. We will need this value when performing AJAX operations
@@ -29,6 +27,7 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Importance</th>
                         <th>Title</th>
                         <th>Status</th>
@@ -41,6 +40,10 @@
                 <tbody>
                     @foreach($tickets as $ticket)
                     <tr>
+                        <td>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </td>
                         <td>
                           <select class="browser-default custom-select">
                             <option selected>{{$ticket->importance}}</option>

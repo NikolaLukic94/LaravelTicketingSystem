@@ -53,9 +53,10 @@
 
         </div>
     </div>
-    @include('ticket_sub_category.ajax_add')
-    @include('ticket_sub_category.ajax_edit')
-    @include('ticket_sub_category.ajax_delete')
+    @include('ticket.view_image')    
+    @include('ticket.ajax_add')
+    @include('ticket.ajax_edit')
+    @include('ticket.ajax_delete')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{{asset('js/ticket_sub_category.js')}}"></script>

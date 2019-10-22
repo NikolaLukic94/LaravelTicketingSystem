@@ -49,11 +49,11 @@ Route::get('my-profile', 'UserProfileController@index');
         Route::delete('/delete/{id}', 'TicketCategoryController@destroy');
     });
 
-    Route::group(['prefix' => 'notification'], function () {
-        Route::get('/index', 'TicketCategoryController@index');       
-        Route::get('/show/{id}', 'TicketCategoryController@show');
-        Route::post('/edit/{id}', 'TicketCategoryController@updateS');
-        Route::delete('/delete/{id}', 'TicketCategoryController@destroy');
+    Route::group(['prefix' => 'notifications'], function () {
+        Route::get('/index', 'NotificationController@index');       
+        Route::get('/show/{id}', 'NotificationController@show');
+        Route::post('/edit/{id}', 'NotificationController@updateS');
+        Route::delete('/delete/{id}', 'NotificationController@destroy');
     });    
 
 //});

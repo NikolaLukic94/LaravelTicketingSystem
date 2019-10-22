@@ -93,8 +93,7 @@ function showTicketModal() {// defines the show add task modal form.
 
 function viewImage() {// defines the show add task modal form.
     $(document).ready(function() {
-        $("#add-error-bag").hide();
-        $('#viewImageTicketModal').modal('show');
+        $('#viewTicketImageModal').modal('show');
     });
 }
 

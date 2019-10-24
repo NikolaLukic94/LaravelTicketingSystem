@@ -4,7 +4,7 @@
   <span class="close">&times;</span>
 
   <!-- Modal Content (The Image) -->
-  <img class="modal-content" id="img01" src="/images/{{$images[0]->link}}">
+  <img class="modal-content" id="img01" src="/images/">
 
   <!-- Modal Caption (Image Text) -->
   <div id="caption"></div>

@@ -16,7 +16,8 @@ class TicketCategoryController extends Controller
     public function index()
     {
         return view('/ticket_category/ticket_cat',[
-            'tickets' => TicketCategory::all()
+            'tickets' => TicketCategory::all(),
+            'notifications' => null
         ]);
     }
 

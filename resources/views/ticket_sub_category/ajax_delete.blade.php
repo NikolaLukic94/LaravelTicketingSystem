@@ -1,4 +1,3 @@
-<!-- Delete Task Modal Form HTML -->
 <div class="modal fade" id="deleteTaskModal">
     <div class="modal-dialog">
         <div class="modal-content">

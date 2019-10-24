@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Search\TicketSearch;
 use App\Label;
 use App\Ticket;
-
+use App\User;
+use Auth;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -40,7 +41,8 @@ class HomeController extends Controller
 
             return view('welcome',[
                 'labels' => Label::all(),
-                'tickets' => Ticket::all()
+                'tickets' => Ticket::all(),
+                'notifications' => Auth::user()->notifications
             ]);
         }
 

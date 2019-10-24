@@ -11,10 +11,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'ticket'], function () {
     Route::get('/index', 'TicketController@index');
     Route::post('/create', 'TicketController@store');
-    Route::get('/show/{id}', 'TicketController@show');//modal
-    Route::get('/edit/{id}', 'TicketController@edit');//modal
+    Route::get('/show/{id}', 'TicketController@show');
+    Route::get('/edit/{id}', 'TicketController@edit');
     Route::post('/edit/{id}', 'TicketController@update');
-    Route::delete('/delete/{id}', 'TicketController@destroy');//modal
+    Route::delete('/delete/{id}', 'TicketController@destroy');
+    Route::get('/see/{id}','TicketController@see');
 });
 
 Route::get('my-profile', 'UserProfileController@index');

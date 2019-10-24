@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Listeners;
-
+use App\Notifications\InformAdminOfNewlyRegisteredUser;
 use App\Events\UserRegistered;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -14,9 +14,9 @@ class SendNotificationToSuperadmin
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -27,6 +27,6 @@ class SendNotificationToSuperadmin
      */
     public function handle(UserRegistered $event)
     {
-        //
+        $user->notify(new InformAdminOfNewlyRegisteredUser($user));
     }
 }

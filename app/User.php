@@ -37,6 +37,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $dispatchesEvents = [
+        'created' => Events\UserRegistered::class,
+
+    ];
+
     public function numOfTicketsAssigned() 
     {
 

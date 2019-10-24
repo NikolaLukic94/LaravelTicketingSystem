@@ -1,4 +1,3 @@
-<!-- Edit Modal HTML -->
 <div class="modal fade" id="editLabelModal">
     <div class="modal-dialog">
         <div class="modal-content">

@@ -16,9 +16,10 @@ class InformAdminOfNewlyRegisteredUser extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user)
     {
-        //
+        $this->user = $user;
+        $this->text = 'new user registered, woohooo';      
     }
 
     /**
@@ -29,7 +30,7 @@ class InformAdminOfNewlyRegisteredUser extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -56,8 +57,8 @@ class InformAdminOfNewlyRegisteredUser extends Notification
     public function toArray($notifiable)
     {
         return [
-            'invoice_id' => $this->invoice->id,
-            'amount' => $this->invoice->amount,
+            'data' => $this->$text,
+            'user_id' => $user->id();
         ];
     }
 }

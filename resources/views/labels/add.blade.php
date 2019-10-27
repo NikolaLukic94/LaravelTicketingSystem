@@ -39,7 +39,6 @@
                         </div>
                     </div>
                 </div> 
-<!-- -->
                 </div>
                 <div class="modal-footer">
                     <input class="btn btn-default" data-dismiss="modal" type="button" value="Cancel">

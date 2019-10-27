@@ -78,12 +78,6 @@ $(document).ready(function() {
     });
 });
 
-function addLabelForm() {
-    $(document).ready(function() {
-        $("#add-error-bag").hide();
-        $('#addLabelModal').modal('show');
-    });
-}
 
 function editLabelForm(task_id) {
     $.ajax({

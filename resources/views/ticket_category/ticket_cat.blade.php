@@ -10,8 +10,10 @@
                     <h2>Manage <b>Ticket Categories</b></h2>
                 </div>
                 <div class="col-sm-6">
-                    <a onclick="event.preventDefault();addTicketCategoryForm();" href="#" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Category</span></a>      
-                    <!--  The line event.preventDefault(); prevents the normal anchor behavior which is opening a link and addTaskForm(); calls a JavaScript function that displays our form. -->                                         
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTicketModal">
+                      <i class="material-icons">&#xE147;</i> 
+                       <span>Add New Ticket</span>
+                    </button>                                         
                 </div>
             </div>
         </div>
@@ -28,8 +30,18 @@
                     <td>{{$ticket->name}}</td>
                     <td>{{$ticket->created_at->diffForHumans()}}</td>
                     <td>
-                        <a onclick="event.preventDefault();editTicketCategoryForm({{$ticket->id}});" href="#" class="edit open-modal" data-toggle="modal" value="{{$ticket->id}}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                        <a onclick="event.preventDefault();deleteTicketCategoryForm({{$ticket->id}});" href="#" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        <!-- Button trigger modal edit -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">
+                          <i class="fas fa-edit"></i>
+                        </button>                                 
+                        <!-- Button trigger modal delete -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteModal">
+                          <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                        </button>                         
+                        <!-- Button trigger modal see -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                          <i class="fa fa-eye material-icons"></i>
+                        </button>  
                     </td>
                 </tr>
                 @endforeach

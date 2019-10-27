@@ -7,6 +7,7 @@ use App\Label;
 use App\Ticket;
 use App\User;
 use Auth;
+use App\TicketImage;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -31,7 +32,7 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function home(Request $request)
+    public function home(Request $request, Ticket $ticket)
     {
         if ($request->isMethod('post')) {
 
@@ -42,7 +43,8 @@ class HomeController extends Controller
             return view('welcome',[
                 'labels' => Label::all(),
                 'tickets' => Ticket::all(),
-                'notifications' => Auth::user()->notifications
+                'notifications' => Auth::user()->notifications,
+                'images' => TicketImage::all()                
             ]);
         }
 

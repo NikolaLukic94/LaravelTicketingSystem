@@ -1,36 +1,22 @@
-<div class="modal fade" id="addTicketSubCategoryModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form id="frmAddTicketSubCategory">
-                <div class="modal-header">
-                    <h4 class="modal-title">
-                        Add New Ticket Sub-Category
-                    </h4>
-                    <button aria-hidden="true" class="close" data-dismiss="modal" type="button">
-                        ×
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="alert alert-danger" id="add-error-bag">
-                        <ul id="add-ticket-sub-category-errors">
-                        </ul>
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            Name
-                        </label>
-                        <input class="form-control" id="name" name="name" type="text">
-                        </input>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input class="btn btn-default" data-dismiss="modal" type="button" value="Cancel">
-                        <button class="btn btn-info" id="btn-add" type="button" value="add">
-                            Add New Ticket Subcategory
-                        </button>
-                    </input>
-                </div>
-            </form>
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">        
+        <h4 class="modal-title">
+            Add Subcategory
+        </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">
+            <h1></h1>    
+            <td></td>
         </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
+  </div>
 </div>

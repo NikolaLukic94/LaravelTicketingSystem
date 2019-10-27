@@ -1,40 +1,93 @@
-<div class="modal fade" id="showTicketModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form id="frmShowTicket">
-                <div class="modal-header">
-                    <h4 class="modal-title">
-                        Ticket Details
-                    </h4>                   
-                    <button aria-hidden="true" class="close" data-dismiss="modal" type="button">
-                        ×
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h1>{{$ticket->title}}</h1>    
-                    <p>{{$ticket->description}}</p>
-                    <p>{{$ticket->importance}}</p>
-                    <p>img</p>
-                    <td>{{$ticket->status}}</td>  
-                    <p>CATEGRY</p>
-                    <P>sUBCATEGORY</P>
-                    <P>CREATED BY</P>                    
-                    @if($images->where('ticket_id', $ticket->id))
-                        <td><img id="myImg" src="/images/{{$images[0]->link}}" style="width:100px;height:60px;"></td>
-                        @include('layouts.partials.ticket.modal')                            
-                    @endif
-                    <td>{{$ticket->created_at->diffForHumans()}}</td>
-                </div>
-                <div class="modal-footer">
-                    <input id="task_id" name="task_id" type="hidden" value="0">
-                        <input class="btn btn-default" data-dismiss="modal" type="button" value="Cancel">
-                            <button class="btn btn-info" id="btn-edit" type="button" value="add">
-                                Update Ticket
-                            </button>
-                        </input>
-                    </input>
-                </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">        
+        <h5 class="modal-title" id="exampleModalLabel">Ticket Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                Title:
+              </div>
+              <div class="col-sm">
+                {{$ticket->title}}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm">
+                Description:
+              </div>
+              <div class="col-sm">
+                {{$ticket->description}}
+              </div>
+            </div> 
+            <hr>  
+            <div class="row">
+              <div class="col-sm">
+                Importance:
+              </div>
+              <div class="col-sm">
+                {{$ticket->importance}}
+              </div>
+            </div>
+            <hr>  
+            <div class="row">
+              <div class="col-sm">
+                Status:
+              </div>
+              <div class="col-sm">
+                {{$ticket->status}}
+              </div>
+            </div> 
+            <hr>
+            <div class="row">
+              <div class="col-sm">
+                Category:
+              </div>
+              <div class="col-sm">
+                <p>{{$ticket->category->name}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm">
+                Subcategory:
+              </div>
+              <div class="col-sm">
+                <p>{{$ticket->subCategory->name}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm">
+                Created by:
+              </div>
+              <div class="col-sm">
+                <p>{{  $ticket->creator->name }} {{$ticket->created_at->diffForHumans()}}</p> 
+              </div>
+            </div>  
+            <hr>     
+            @if($images->where('ticket_id', $ticket->id))
+                <td><img id="myImg" src="/images/{{$images}}" style="width:100px;height:60px;"></td>
+                @include('layouts.partials.ticket.modal')                            
+            @endif             
+          </div>
+            <form action="/comment/add/{{$ticket->id}}" method="POST">
+              <div class="mt-4 mb-4">
+                <textarea style="width: 100%"></textarea>
+              <button type="submit" class="btn btn-secondary" data-dismiss="modal">Submit</button> 
             </form>
+        </div> 
         </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
     </div>
+  </div>
 </div>

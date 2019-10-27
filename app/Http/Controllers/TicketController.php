@@ -25,7 +25,8 @@ class TicketController extends Controller
         return view('/ticket/index', [
             'users' => User::all(),
             'tickets' => Ticket::all(),
-            //where('status','!=','closed')->orderBy('created_at', 'asc')->first(),
+            'categories' => TicketCategory::all(),
+            'sub_categories' => TicketSubCategory::all(),            
             'images' => TicketImage::all(),
             'importance' => $this->importance            
         ]);

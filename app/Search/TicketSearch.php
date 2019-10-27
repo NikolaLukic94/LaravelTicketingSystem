@@ -1,12 +1,12 @@
 <?php
 
-namespace App\UserSearch;
+namespace App\Search;
 
-use App\Ticket;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Builder;
+use App\Ticket;
 
 class UserSearch
+
 {
     public static function apply(Request $filters)
     {

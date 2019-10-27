@@ -38,6 +38,7 @@ class User extends Authenticatable
     ];
 
     protected $dispatchesEvents = [
+       //
         'created' => Events\UserRegistered::class,
 
     ];

@@ -1,35 +1,28 @@
-<div class="modal fade" id="deleteTaskModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form id="frmDeleteTicketSubCategory">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="delete-title" name="title">
-                        Delete Ticket Sub-Category
-                    </h4>
-                    <button aria-hidden="true" class="close" data-dismiss="modal" type="button">
-                        ×
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>
-                        Are you sure you want to delete this ticket sub-category?
-                    </p>
-                    <p class="text-warning">
-                        <small>
-                            This action cannot be undone.
-                        </small>
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <input id="ticket_sub_category_id" name="ticket_sub_category_id" type="hidden" value="0">
-                        <input class="btn btn-default" data-dismiss="modal" type="button" value="Cancel">
-                            <button class="btn btn-danger" id="btn-delete" type="button">
-                                Delete Ticket Subcategory
-                            </button>
-                        </input>
-                    </input>
-                </div>
-            </form>
-        </div>
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">        
+        <h4 class="modal-title" id="delete-title" name="title">
+            Delete Subcategory
+        </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+         <div class="modal-body">
+                <p>
+                    Are you sure you want to delete this?
+                </p>
+                <p class="text-warning">
+                    <small>
+                        This action cannot be undone.
+                    </small>
+                </p>
+            </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Yes, please delete</button>
+      </div>
     </div>
+  </div>
 </div>

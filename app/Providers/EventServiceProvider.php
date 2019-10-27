@@ -16,9 +16,7 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'App\Events\UserRegistered' => [
-            'App\Listeners\SendNotificationToSuperadmin',
-        ],        
-    ];
+    ] ];
 
     /**
      * Register any events for your application.

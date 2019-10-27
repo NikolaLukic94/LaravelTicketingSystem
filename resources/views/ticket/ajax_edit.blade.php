@@ -1,46 +1,33 @@
-<!-- Edit Modal HTML -->
-<div class="modal fade" id="editTicketModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form id="frmEditTicket">
-                <div class="modal-header">
-                    <h4 class="modal-title">
-                        Edit Task
-                    </h4>
-                    <button aria-hidden="true" class="close" data-dismiss="modal" type="button">
-                        ×
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="alert alert-danger" id="edit-error-bag">
-                        <ul id="edit-ticket-sub-category-errors">
-                        </ul>
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            Task
-                        </label>
-                        <input class="form-control" id="task" name="task" required="" type="text">
-                        </input>
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            Description
-                        </label>
-                        <input class="form-control" id="description" name="description" required="" type="text">
-                        </input>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input id="task_id" name="task_id" type="hidden" value="0">
-                        <input class="btn btn-default" data-dismiss="modal" type="button" value="Cancel">
-                            <button class="btn btn-info" id="btn-edit" type="button" value="add">
-                                Update Ticket Subcategory
-                            </button>
-                        </input>
-                    </input>
-                </div>
-            </form>
+<div class="modal fade" id="editModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">        
+        <h4 class="modal-title">
+            Edit Ticket
+        </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">
+            <h1>{{$ticket->title}}</h1>    
+            <p>{{$ticket->description}}</p>
+            <p>{{$ticket->importance}}</p>
+            <p>img</p>
+            <td>{{$ticket->status}}</td>  
+            <p>CATEGRY</p>
+            <P>sUBCATEGORY</P>
+            <P>CREATED BY</P>                    
+            @if($images->where('ticket_id', $ticket->id))
+                <td><img id="myImg" src="/images/{{$images}}" style="width:100px;height:60px;"></td>
+                @include('layouts.partials.ticket.modal')                            
+            @endif
+            <td>{{$ticket->created_at->diffForHumans()}}</td>
         </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
+  </div>
 </div>

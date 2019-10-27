@@ -20,6 +20,22 @@ class Ticket extends Model
         return $this->hasOne(TicketProcessor::class);
     }
 
+    public function creator() 
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function category() 
+    {
+        return $this->belongsTo(TicketCategory::class, 'category_id');
+    }    
+
+    public function subCategory() 
+    {
+        return $this->belongsTo(TicketSubCategory::class, 'category_id');
+    }    
+
+
     public function imageCount() {
 
         return $this->hasMany(TicketImage::class)->count();
@@ -70,5 +86,10 @@ class Ticket extends Model
     public function getLatestTicket($field_for_sorting) {
         return DB::table('tickets')->latest($field_for_sorting)->first();
     }     
+
+    public function commentsCount() {
+
+        return $this->hasMany(Comment::class)->count();
+    }    
 
 }

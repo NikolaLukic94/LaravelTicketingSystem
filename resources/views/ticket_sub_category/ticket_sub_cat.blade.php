@@ -9,8 +9,12 @@
                     <div class="col-sm-6">
                         <h2>Manage <b>Ticket Subcategories</b></h2>
                     </div>
-                    <div class="col-sm-6">
-                        <a onclick="event.preventDefault();addTicketSubCategoryForm();" href="#" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Ticket Subcategory</span></a>                                               
+                    <div class="col-sm-6 mb-4">
+                        <!-- Button trigger modal edit -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">
+                          <i class="material-icons">&#xE147;</i> 
+                           <span>Add New Ticket</span>
+                        </button>                                                     
                     </div>
                 </div>
             </div>
@@ -18,20 +22,26 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Task</th>
+                        <th>Name</th>
                         <th>Created At</th>
-                        <th>Description</th>
-                        <th>Done</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($ticket_sub_cat as $tsc)
                     <tr>
+                        <td>{{$tsc->id}}</td>
                         <td>{{$tsc->name}}</td>
+                        <td>{{$tsc->created_at->diffForHumans()}}</td>
                         <td>
-                            <a onclick="event.preventDefault();editTicketSubCategoryForm({{$tsc->id}});" href="#" class="edit open-modal" data-toggle="modal" value="{{$tsc->id}}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a onclick="event.preventDefault();deleteTicketSubCategoryForm({{$tsc->id}});" href="#" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        <!-- Button trigger modal edit -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal1">
+                          <i class="fas fa-edit"></i>
+                        </button>                                 
+                        <!-- Button trigger modal delete -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteModal">
+                          <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                        </button>                          
                         </td>
                     </tr>
                     @endforeach

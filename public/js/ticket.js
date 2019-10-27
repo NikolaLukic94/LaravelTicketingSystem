@@ -78,25 +78,6 @@ $(document).ready(function() {
     });
 });
 
-function addTicketForm() {// defines the show add task modal form.
-    $(document).ready(function() {
-        $("#add-error-bag").hide();
-        $('#addTicketModal').modal('show');
-    });
-}
-function showTicketModal() {// defines the show add task modal form.
-    $(document).ready(function() {
-        $("#add-error-bag").hide();
-        $('#showTicketModal').modal('show');
-    });
-}
-
-function viewImage() {// defines the show add task modal form.
-    $(document).ready(function() {
-        $('#viewTicketImageModal').modal('show');
-    });
-}
-
 function editTicketCategoryForm(task_id) {
     $.ajax({
         type: 'GET',

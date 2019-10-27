@@ -10,10 +10,11 @@
                     <h2 class="float-left">Manage <b>Tickets</b></h2>
                 </div>
                 <div class="col-sm-6 mb-4">
-                    <a onclick="event.preventDefault();addTicketForm();" href="#" class="btn btn-success float-right" data-toggle="modal"><i class="material-icons">&#xE147;</i> 
-                      <span>Add New Ticket</span>
-                    </a>      
-                    <!--  The line event.preventDefault(); prevents the normal anchor behavior which is opening a link and addTaskForm(); calls a JavaScript function that displays our form. -->                                   
+                    <!-- Button trigger modal edit -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTicketModal">
+                      <i class="material-icons">&#xE147;</i> 
+                       <span>Add New Ticket</span>
+                    </button>                                                     
                 </div>
             </div>
         </div>
@@ -39,13 +40,15 @@
                     </td>
                     <td>
                       <select class="browser-default custom-select">
-                        <option selected>{{$ticket->importance}}</option>
+                        <option selected>-- Select --</option>
                         @foreach($importance as $key => $value)
                         <option value="{{$key}}">{{$value}}</option>
                         @endforeach
                       </select> 
                     </td>
-                    <td>{{$ticket->title}}</td>
+                    <td>
+                        {{$ticket->title}}
+                    </td>
                     <td>
                       <select class="browser-default custom-select">
                         <option selected>{{$ticket->status}}</option>
@@ -80,10 +83,22 @@
                         @endforeach
                       </select>                                 
                     </td>
-                    <td>                          
-                        <a onclick="event.preventDefault();editTicketForm({{$ticket->id}});" href="#" class="edit open-modal" data-toggle="modal" value="{{$ticket->id}}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                        <a onclick="event.preventDefault();deleteTicketForm({{$ticket->id}});" href="#" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                        <a onclick="event.preventDefault();showTicketModal({{$ticket->id}});" href="#" class="edit open-modal" data-toggle="modal" value="{{$ticket->id}}"><i class="fa fa-eye material-icons" data-toggle="tooltip" aria-hidden="true"></i></a>
+                    <td>              
+                        <!-- Button trigger modal edit -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">
+                          <i class="fas fa-edit"></i>
+                        </button>                                 
+                        <!-- Button trigger modal delete -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteModal">
+                          <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                        </button>                         
+                        <!-- Button trigger modal see -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                          <i class="fa fa-eye material-icons"></i>
+                        </button>  
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#saveChangesModal">
+                          <i class="fas fa-save"></i>        
+                        </button>                                      
                     </td>
                 </tr>
                 @endforeach
@@ -94,9 +109,11 @@
         </div>
     </div>
 </div>
+@include('ticket.saveChangesModal')
 @include('ticket.ajax_add')
 @include('ticket.ajax_edit')
 @include('ticket.ajax_delete')
-@include('ticket.show')
+@include('ticket.modal_show')
 
 @stop
+

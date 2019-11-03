@@ -31,8 +31,13 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="ticket-list">
                 @foreach($tickets as $ticket)
+@include('ticket.saveChangesModal')
+@include('ticket.ajax_add')
+@include('ticket.ajax_edit')
+@include('ticket.ajax_delete')
+@include('ticket.modal_show')                
                 <tr>
                     <td>
                         <i class="fa fa-star" aria-hidden="true"></i>
@@ -109,11 +114,62 @@
         </div>
     </div>
 </div>
-@include('ticket.saveChangesModal')
-@include('ticket.ajax_add')
-@include('ticket.ajax_edit')
-@include('ticket.ajax_delete')
-@include('ticket.modal_show')
+
 
 @stop
 
+<script type="text/javascript">
+    $.ajaxSetup({
+
+        headers:{
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({ //performs the AJAX operation.
+            type: 'POST',//type: 'POST', specifies the HTTP verb to be used.
+            url: '/ticket/store',//url: '/ticket-category', defines the URL that our AJAX operation should interact with.
+            data: {//defines the values that should be submitted to the back-end server that processes the AJAX operations.
+                title: $("#frmAddTicket input[title=title]").val(),// uses jQuery to get the value of the input named name in the form with the id of #frmAddTask.
+                importance: $("#frmAddTicket input[importance=importance]").val(),
+                category: $("#frmAddTicket input[category=category]").val(),
+                subcategory: $("#frmAddTicket input[subcategory=subcategory]").val(),
+                description: $("#frmAddTicket input[description=description]").val(),                                
+            },
+            dataType: 'json', // sets the data type for the operation
+            success: function(data) {//defines the function that should be called if everything works ok. The function accepts a parameter data which contains the data returned from the server.
+                $('#frmAddTicket').trigger("reset");
+                $("#frmAddTicket .close").click();
+                console.log('data');
+            },
+            error: function(data) {
+                var errors = $.parseJSON(data.responseText);
+
+                $('#add-ticket-errors').html('');
+                $.each(errors.messages, function(key, value) {
+                   console.log(value);
+                });
+                $("#add-error-bag").show();
+            }
+        });
+
+/*
+    $('#btn-add').on('submit',function(e){
+        e.preventDefault();
+        var data = $(this).serialize();
+        var url = $(this).attr('action');
+        var post = $(this).attr('method');
+        $.ajax({
+            type:post,
+            url:url,
+            data:data,
+            dataTy:'json',
+            success:function(data){
+                console.log('data');
+                var tr = $('<tr/>');
+                tr.append($("<td/>".{text: data.id}))
+
+            $('#ticket-list').append(tr);                
+            }
+        })
+    })*/
+</script>

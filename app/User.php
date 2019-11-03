@@ -43,9 +43,22 @@ class User extends Authenticatable
 
     ];
 
+    /**
+     * Get the comments for the blog post.
+     */
+    public function assignedTickets()
+    {
+        return $this->hasMany('App\Ticket','assignee_id');
+    }
+
+    public function assignedTicketsCount()
+    {
+        return $this->hasMany('App\Ticket','assignee_id')->count();
+    }
+
     public function numOfTicketsAssigned() 
     {
-
+        return $this->hasMany(Ticket::class)->count();
     }
 
     public function participatingInTickets() 

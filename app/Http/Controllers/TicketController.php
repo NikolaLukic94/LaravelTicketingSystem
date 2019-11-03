@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Comment;
 use App\Ticket;
 use App\TicketImage;
 use App\TicketCategory;
@@ -11,7 +12,7 @@ use Illuminate\Http\Request;
 //use RealRashid\SweetAlert\Facades\Alert;
 use Alert;
 use Illuminate\Support\Facades\Storage;
-
+use Redirect,Response;
 class TicketController extends Controller
 {
     /**
@@ -28,7 +29,8 @@ class TicketController extends Controller
             'categories' => TicketCategory::all(),
             'sub_categories' => TicketSubCategory::all(),            
             'images' => TicketImage::all(),
-            'importance' => $this->importance            
+            'importance' => $this->importance,
+            'comments' => Comment::all()          
         ]);
     }
 
@@ -40,9 +42,21 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        Ticket::createFromRequest($request);   
 
-        return back();
+        $imageName = null;
+        $auth_id = Auth::user()->id;
+
+        $ticket = Ticket::create([
+            'title' =>  $request->title,
+            'importance' =>  $request->importance,
+            'description' => $request->description,
+            'category_id' => $request->subcategory,
+            'sub_category_id' => $request->subcategory,
+            'user_id' => $auth_id,
+            'assignee_id' => $auth_id    
+        ]);
+            return Response::json($ticket); 
+
     }
 
     /**

@@ -2,12 +2,12 @@
 
 @section('content')
 <body>
+
     <div id="app">
         <main class="py-4">
             <div class="container">
+                <p>Project \ MyBoard \ InProgress</p>
                 <h1><b>Board</b></h1>
-                <form action="/" method="post">
-                {{ csrf_field() }}
                     <div class="input-group input-group-sm mb-3">
                         <input type="text" name="value" class="form-control">
                         <div class="input-group-append">
@@ -34,13 +34,14 @@
                                         @if($ticket->label_id == $label->id)
                                           <div class="card">
                                               <a href="#" style="padding-top: 15px;padding-bottom: 15px;">{{ $ticket->title }}</a>
-                                                <img src="">                                                                              
-                                                <div class="card-footer">
-                                                    <!-- Button trigger modal see -->
-                                                    <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal">
-                                                      <i class="fa fa-eye material-icons"></i>
-                                                    </button>                                                                  
-                                                </div>                                                             
+                                                <img src="">   
+                                        <div class="card-footer"> 
+                                            <div class="row">
+                                                <div id="apps">     
+                                                    <example-component></example-component>
+                                                </div>                                                
+                                            </div>      
+                                    </div>            
                                           </div>
                                           @include('ticket.modal_show')
                                         @endif
@@ -52,12 +53,11 @@
                     </div>
                 @endif    
                 </div>
+                    <script type="text/javascript" src="js/app.js" defer></script>   
             </div>
         </main>
     </div>
 
-</body>
-</html>
 
 @include('ticket.ajax_add')
 

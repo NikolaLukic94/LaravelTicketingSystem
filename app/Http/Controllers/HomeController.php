@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Search\TicketSearch;
 use App\Label;
 use App\Ticket;
+use App\TicketCategory;
+use App\TicketSubCategory;
 use App\User;
+use App\Comment;
 use Auth;
 use App\TicketImage;
 use Illuminate\Http\Request;
@@ -36,15 +38,18 @@ class HomeController extends Controller
     {
         if ($request->isMethod('post')) {
 
-            return TicketSearch::apply($request);
+            // search for tickets
 
         }   else    {
-
+            
             return view('welcome',[
                 'labels' => Label::all(),
                 'tickets' => Ticket::all(),
                 'notifications' => Auth::user()->notifications,
-                'images' => TicketImage::all()                
+                'images' => TicketImage::all(),
+                'categories' => TicketCategory::all(),
+                'sub_categories' => TicketSubCategory::all(),
+                'comments' => Comment::all()           
             ]);
         }
 

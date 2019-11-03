@@ -15,6 +15,9 @@ $factory->define(App\Ticket::class, function (Faker $faker) {
         'user_id' => function () {
             return factory('App\User')->create()->id;
         },
+        'assignee_id' => function () {
+            return factory('App\User')->create()->id;
+        },        
         'label_id' => function () {
             return factory('App\Label')->create()->id;
         }, 

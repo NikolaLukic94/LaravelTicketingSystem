@@ -72,15 +72,27 @@
               </div>
             </div>  
             <hr>     
-            @if($images->where('ticket_id', $ticket->id))
-                <td><img id="myImg" src="/images/{{$images}}" style="width:100px;height:60px;"></td>
-                @include('layouts.partials.ticket.modal')                            
-            @endif             
+            @foreach($images as $image)
+              @if($image->where('ticket_id', $ticket->id))
+                  <td><img id="myImg" src="/images/{{$images}}" style="width:100px;height:60px;"></td>
+                  @include('layouts.partials.ticket.modal')                            
+              @endif             
+            @endforeach
           </div>
-            <form action="/comment/add/{{$ticket->id}}" method="POST">
-              <div class="mt-4 mb-4">
-                <textarea style="width: 100%"></textarea>
-              <button type="submit" class="btn btn-secondary" data-dismiss="modal">Submit</button> 
+            <ul>
+              @foreach($comments as $comment)
+                @if($comment->ticket_id == $ticket->id)
+                  <li>
+                    {{$comment->text}}
+                  </li>
+                @endif
+              @endforeach
+            </ul>
+            <form action="/comment/store/{{$ticket->id}}" method="POST">
+              {{ csrf_field() }}
+                <div class="mt-4 mb-4">
+                <textarea name="comment" style="width: 100%"></textarea>
+                <button type="submit" class="btn btn-secondary">Submit</button> 
             </form>
         </div> 
         </div>

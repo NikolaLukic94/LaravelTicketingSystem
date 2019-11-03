@@ -17,7 +17,7 @@ class Ticket extends Model
      */
     public function ticketProcessor()
     {
-        return $this->hasOne(TicketProcessor::class);
+        return $this->hasOne(TicketProcessor::class, 'assignee_id');
     }
 
     public function creator() 
@@ -47,6 +47,7 @@ class Ticket extends Model
                             'category_id',
                             'sub_category_id',
                             'user_id',
+                            'assignee_id',
                             'due' ];
 
     public static function createFromRequest($request)
@@ -54,16 +55,17 @@ class Ticket extends Model
         $imageName = null;
         $auth_id = Auth::user()->id;
 
-        $new_ticket = self::create([
+        return $new_ticket = self::create([
             'title' =>  $request->title,
             'importance' =>  $request->importance,
             'description' => $request->description,
             'category_id' => $request->subcategory,
             'sub_category_id' => $request->subcategory,
-            'user_id' => $auth_id    
+            'user_id' => $auth_id,
+            'assignee_id' => $auth_id    
         ]);
 
-        TicketImage::createFromRequest($new_ticket->id, $request);
+       // TicketImage::createFromRequest($new_ticket->id, $request);
 
     }
 

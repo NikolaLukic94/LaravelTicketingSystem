@@ -27,7 +27,7 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="ticket-list">
                     @foreach($ticket_sub_cat as $tsc)
                     <tr>
                         <td>{{$tsc->id}}</td>

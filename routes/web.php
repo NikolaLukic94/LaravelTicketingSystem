@@ -10,7 +10,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'ticket'], function () {
     Route::get('/index', 'TicketController@index');
-    Route::post('/create', 'TicketController@store');
+    Route::post('/store', 'TicketController@store');
     Route::get('/show/{id}', 'TicketController@show');
     Route::get('/edit/{id}', 'TicketController@edit');
     Route::post('/edit/{id}', 'TicketController@update');
@@ -19,7 +19,6 @@ Route::group(['prefix' => 'ticket'], function () {
 });
 
 Route::get('my-profile', 'UserProfileController@index');
-
 
 //Route::middleware(['admin'])->group(function () {
 
@@ -46,8 +45,15 @@ Route::get('my-profile', 'UserProfileController@index');
         Route::post('/store', 'TicketCategoryController@store');       
         Route::get('/show/{id}', 'TicketCategoryController@show');
         Route::get('/edit/{id}', 'TicketCategoryController@edit');
-        Route::post('/edit/{id}', 'TicketCategoryController@updateS');
+        Route::post('/edit/{id}', 'TicketCategoryController@update');
         Route::delete('/delete/{id}', 'TicketCategoryController@destroy');
+    });
+
+    Route::group(['prefix' => 'comment'], function () {
+        Route::get('/index', 'CommentController@index');  
+        Route::post('/store/{id}', 'CommentController@store');       
+        Route::post('/edit/{id}', 'CommentController@update');
+        Route::delete('/delete/{id}', 'CommentController@destroy');
     });
 
     Route::group(['prefix' => 'notifications'], function () {

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("#btn-add").click(function() { //defines the click event for the Add Task button that is on the modal form.
+    $("#frmAddTicket").click(function() { //defines the click event for the Add Task button that is on the modal form.
 
         $.ajaxSetup({ //sets up the AJAX X-CSRF-TOKEN header and passes the token value that we set up in the header section of the parent template. 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') reads the header meta named csrf-token and reads the value of the content attribute and assigns it to X-CSRF-TOKEN
             headers: {
@@ -10,7 +10,11 @@ $(document).ready(function() {
             type: 'POST',//type: 'POST', specifies the HTTP verb to be used.
             url: '/ticket/store',//url: '/ticket-category', defines the URL that our AJAX operation should interact with.
             data: {//defines the values that should be submitted to the back-end server that processes the AJAX operations.
-                name: $("#frmAddTicket input[name=name]").val(),// uses jQuery to get the value of the input named name in the form with the id of #frmAddTask.
+                title: $("#frmAddTicket input[title=title]").val(),// uses jQuery to get the value of the input named name in the form with the id of #frmAddTask.
+                importance: $("#frmAddTicket input[importance=importance]").val(),
+                category: $("#frmAddTicket input[category=category]").val(),
+                subcategory: $("#frmAddTicket input[subcategory=subcategory]").val(),
+                description: $("#frmAddTicket input[description=description]").val(),                                
             },
             dataType: 'json', // sets the data type for the operation
             success: function(data) {//defines the function that should be called if everything works ok. The function accepts a parameter data which contains the data returned from the server.

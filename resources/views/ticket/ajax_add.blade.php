@@ -1,7 +1,7 @@
 <div class="modal fade" id="addTicketModal" tabindex="-1" role="dialog" aria-labelledby="addTicketModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <form id="frmAddTicket">
+      <form action="/ticket/store" method="POST" id="frmAddTicket">
         <div class="modal-header">
             <h4 class="modal-title">
                 Add New Ticket
@@ -31,11 +31,11 @@
                     </label>
                 </div>
                 <div class="col">
-                      <select class="browser-default custom-select">
-                        <option selected>{{$ticket->importance}}</option>
-                        @foreach($importance as $key => $value)
-                        <option value="{{$key}}">{{$value}}</option>
-                        @endforeach
+                      <select name="importance" class="browser-default custom-select">
+                        <option selected></option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
                       </select> 
                 </div>
             </div>
@@ -48,7 +48,7 @@
                     </label>
                 </div>
                 <div class="col">
-                      <select class="browser-default custom-select">
+                      <select name="category" class="browser-default custom-select">
                         <option selected>-- Select --</option>
                         @foreach($categories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
@@ -65,7 +65,7 @@
                     </label>
                 </div>
                 <div class="col">
-                  <select class="browser-default custom-select">
+                  <select name="subcategory" class="browser-default custom-select">
                     <option selected>-- Select --</option>
                     @foreach($sub_categories as $sub_category)
                     <option value="{{$sub_category->id}}">{{$sub_category->name}}</option>
@@ -110,3 +110,4 @@
     </div>
   </div>
 </div>
+
